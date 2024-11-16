@@ -3,11 +3,11 @@ services:
     citronix:
         image: postgres:latest
         container_name: citronix
-        ports:
-            - "5432:5432"
         environment:
             POSTGRES_USER: citronix
             POSTGRES_PASSWORD: citronix
             POSTGRES_DB: citronix
+        ports:
+            - "5432:5432"
         volumes:
             - ./data:/var/lib/postgresql/data
