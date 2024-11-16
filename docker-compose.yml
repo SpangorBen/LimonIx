@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+    citronix:
+        image: postgres:latest
+        container_name: citronix
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: citronix
+            POSTGRES_PASSWORD: citronix
+            POSTGRES_DB: citronix
+        volumes:
+            - ./data:/var/lib/postgresql/data
