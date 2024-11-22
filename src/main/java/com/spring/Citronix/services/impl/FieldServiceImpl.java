@@ -7,6 +7,7 @@ import com.spring.Citronix.mappers.FieldMapper;
 import com.spring.Citronix.mappers.GenericEntityResolver;
 import com.spring.Citronix.repositories.FieldRepository;
 import com.spring.Citronix.services.FieldService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,7 +53,7 @@ public class FieldServiceImpl implements FieldService {
     @Override
     public void deleteField(Long fieldId) {
         if (!fieldRepository.existsById(fieldId)) {
-            throw new RuntimeException("Field not found");
+            throw new EntityNotFoundException("Field not found");
         }
         fieldRepository.deleteById(fieldId);
     }
@@ -60,7 +61,7 @@ public class FieldServiceImpl implements FieldService {
     @Override
     public FieldResponseDTO getField(Long fieldId) {
         Field field = fieldRepository.findById(fieldId)
-                .orElseThrow(() -> new RuntimeException("Field not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Field not found"));
         return fieldMapper.toDto(field);
     }
 
