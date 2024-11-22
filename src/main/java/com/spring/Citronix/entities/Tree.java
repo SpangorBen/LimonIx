@@ -21,6 +21,7 @@ public class Tree {
     @Temporal(TemporalType.DATE)
     private LocalDate plantationDate;
 
+    @Transient
     private Integer age;
 
     @Enumerated(EnumType.STRING)
