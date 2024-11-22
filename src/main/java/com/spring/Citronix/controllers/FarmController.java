@@ -2,6 +2,7 @@ package com.spring.Citronix.controllers;
 
 import com.spring.Citronix.dtos.FarmDTO;
 import com.spring.Citronix.services.FarmService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/farm")
+@RequestMapping("/api/farm")
 @RequiredArgsConstructor
 public class FarmController {
 
@@ -28,7 +29,7 @@ public class FarmController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<FarmDTO> saveFarm(@RequestBody FarmDTO farmDTO) {
+    public ResponseEntity<FarmDTO> saveFarm(@RequestBody @Valid FarmDTO farmDTO) {
         return ResponseEntity.ok(farmService.saveFarm(farmDTO));
     }
 

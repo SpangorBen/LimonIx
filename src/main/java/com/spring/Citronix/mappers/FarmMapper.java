@@ -11,5 +11,6 @@ public interface FarmMapper {
     @Mapping(target = "farmId", ignore = true)
 //    @Mapping(target = "creationDate", ignore = true)
     Farm toEntity(FarmDTO farmDto);
+
     FarmDTO toDTO(Farm farm);
 }

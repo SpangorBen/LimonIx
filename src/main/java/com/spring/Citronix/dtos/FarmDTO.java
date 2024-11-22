@@ -1,13 +1,17 @@
 package com.spring.Citronix.dtos;
 
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class FarmDTO {
 
     private Long farmId;
@@ -24,7 +28,9 @@ public class FarmDTO {
     @DecimalMin(value = "0.2", message = "Area must be greater than 0.2")
     private Double area;
 
-//    @NotNull(message = "Creation date is required")
-//    @PastOrPresent(message = "Creation date must be in the past or present")
-    private LocalDate creationDate = LocalDate.now();
+    @NotNull(message = "Creation date is required")
+    @PastOrPresent(message = "Creation date must be in the past or present")
+    private LocalDate creationDate;
+
+
 }
