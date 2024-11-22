@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### Data ###
-/data/
+#/data/
 
 .env
 docker-compose.yml
