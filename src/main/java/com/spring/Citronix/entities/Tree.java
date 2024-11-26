@@ -24,7 +24,8 @@ public class Tree {
     @Transient
     private Integer age;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
+    @Transient
     private TreeStatus status;
 
     @ManyToOne

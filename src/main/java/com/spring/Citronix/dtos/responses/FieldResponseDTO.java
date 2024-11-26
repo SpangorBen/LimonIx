@@ -1,8 +1,9 @@
 package com.spring.Citronix.dtos.responses;
 
 import com.spring.Citronix.dtos.FarmDTO;
-import com.spring.Citronix.entities.Farm;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter

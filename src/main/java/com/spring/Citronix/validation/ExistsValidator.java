@@ -8,6 +8,8 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+
 
 @Component
 public class ExistsValidator implements ConstraintValidator<Exists, Object> {
@@ -27,13 +29,22 @@ public class ExistsValidator implements ConstraintValidator<Exists, Object> {
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
-        if (value == null) return false;
+        if (value == null) return true;
 
-        Query query = entityManager.createQuery(
-                "SELECT COUNT(e) FROM " + entity.getSimpleName() + " e WHERE e." + field + " = :value");
-        query.setParameter("value", value);
+        if (value instanceof Collection) {
+            return ((Collection<?>) value).stream()
+                    .allMatch(this::doesEntityExist);
+        }
 
-        Long count = (Long) query.getSingleResult();
-        return count > 0;
+        return doesEntityExist(value);
+    }
+
+    private boolean doesEntityExist(Object value) {
+        String query = String.format("SELECT COUNT(e) FROM %s e WHERE e.%s = :value",
+                entity.getSimpleName(), field);
+        Long count = entityManager.createQuery(query, Long.class)
+                .setParameter("value", value)
+                .getSingleResult();
+        return count != null && count > 0;
     }
 }
