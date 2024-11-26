@@ -3,7 +3,7 @@ package com.spring.Citronix.controllers;
 import com.spring.Citronix.dtos.HarvestRequestDTO;
 import com.spring.Citronix.dtos.responses.HarvestResponseDTO;
 import com.spring.Citronix.services.HarvestService;
-import com.spring.Citronix.validation.HarvestCreate;
+import com.spring.Citronix.validation.groups.HarvestCreate;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

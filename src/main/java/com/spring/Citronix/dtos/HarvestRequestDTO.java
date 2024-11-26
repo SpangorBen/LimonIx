@@ -4,7 +4,7 @@ import com.spring.Citronix.annotations.Exists;
 import com.spring.Citronix.annotations.ValidDateSeason;
 import com.spring.Citronix.annotations.ValidFieldSeason;
 import com.spring.Citronix.entities.Field;
-import com.spring.Citronix.validation.HarvestUpdate;
+import com.spring.Citronix.validation.groups.HarvestUpdate;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
