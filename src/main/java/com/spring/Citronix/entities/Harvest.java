@@ -3,7 +3,9 @@ package com.spring.Citronix.entities;
 import com.spring.Citronix.entities.enums.Season;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -22,10 +24,14 @@ public class Harvest {
     private Season season;
 
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
 
     @Column(nullable = false)
-    private Double quantity;
+    private Double totalQuantity;
+
+    @ManyToOne
+    @JoinColumn(name = "field_id", nullable = false)
+    private Field field;
 
     @OneToMany(mappedBy = "harvest", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HarvestDetail> harvestDetails;
