@@ -1,4 +1,4 @@
 package com.spring.Citronix.validation;
 
-public interface HarvestUpdate {
+public interface SaleCreate {
 }

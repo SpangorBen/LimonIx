@@ -3,7 +3,7 @@ package com.spring.Citronix.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -17,13 +17,10 @@ public class Sale {
     private Long id;
 
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
 
     @Column(nullable = false)
     private Double unitPrice;
-
-    @Column(nullable = false)
-    private Double quantity;
 
     @Column(nullable = false)
     private Double totalRevenue;
